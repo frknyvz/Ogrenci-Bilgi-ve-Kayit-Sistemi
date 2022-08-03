@@ -1,0 +1,189 @@
+﻿@using crmmedipol.Models.Entity
+@model List<CRM_OGRENCI>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutKullanici.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page-wrapper bg-white p-t-180 p-b-100 font-robo">
+        <div class="wrapper wrapper--w960">
+            <div class="card">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h3 class="title" style="margin-bottom:20px">Öğrenci Ara</h3>
+                    @using (Html.BeginForm("OgrenciAra", "Ogrenci", FormMethod.Get))
+                    {
+                        <div class="form-group">
+                            @Html.TextBox("p", "", new { placeholder = "Ad-Soyad Giriniz", @class = "form-control", autofocus = "autofocus" })
+                        </div>
+                        <div>
+                            <center>
+                                <input type="submit" value="Ara" class="btn btn-success" />
+                                <i class="fas fa-search"></i>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="button" value="Temizle" onclick="location.href='/Ogrenci/OgrenciAra'" class="btn btn-danger" />
+                                <i class="fas fa-eraser"></i>
+                            </center>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-list"></i>
+                        &nbsp; Öğrenci Listesi
+                    </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Küçült">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr style="background-color: #172c4a; color: white">
+                            <th>ID</th>
+                            <th>Öğrenci Adı</th>
+                            <th>Mail</th>
+                            <th>Telefon</th>
+                            <th>Şehir</th>
+                            <th>Açıklama#1</th>
+                            <th>Açıklama#2</th>
+                        </tr>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.ID</td>
+                                <td>@x.AD_SOYAD</td>
+                                <td>@x.MAIL</td>
+                                <td>@x.TELEFON</td>
+                                <td>@x.CRM_SEHIR.SEHIRADI</td>
+                                <td>@x.ACIKLAMA_1</td>
+                                <td>@x.ACIKLAMA_2</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-list"></i>
+                        &nbsp; Öğrenci Okul Bilgisi
+                    </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Küçült">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr style="background-color: #172c4a; color: white">
+                            <th>ID</th>
+                            <th>Öğrenci Adı</th>
+                            <th>Öğrenim Durumu</th>
+                            <th>Mezun Olduğu Lise</th>
+                            <th>Bölümü</th>
+                        </tr>
+                        @foreach (var x in Model)
+                        {
+                            <tr>
+                                <td>@x.ID</td>
+                                <td>@x.AD_SOYAD</td>
+                                <td>@x.CRM_OKUL.OGRENIMDURUM</td>
+                                <td>@x.CRM_OKUL.MEZUNLISE</td>
+                                <td>@x.CRM_OKUL.CRM_BOLUM.BOLUMADI</td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        <i class="fas fa-list"></i>
+                        &nbsp; Sınav Sonuç Listesi
+                    </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Küçült">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <tr style="color: white">
+                            <th style="background-color: #4587e4">Öğrenci Adı</th>
+                            <th style="background-color: #3364aa">TYT_P</th>
+                            <th style="background-color: #3364aa ">TYT_S</th>
+                            <th style="background-color: #25497d">AYT_SAY_P</th>
+                            <th style="background-color: #25497d">AYT_SAY_S</th>
+                            <th style="background-color: #203c64">AYT_EA_P</th>
+                            <th style="background-color: #203c64 ">AYT_EA_S</th>
+                            <th style="background-color: #182d4b">AYT_SOZ_P</th>
+                            <th style="background-color: #182d4b ">AYT_SOZ_S</th>
+                            <th style="background-color: #12233b">AYT_DIL_P</th>
+                            <th style="background-color: #12233b">AYT_DIL_S</th>
+                        </tr>
+                        @foreach (var x in Model)
+                        {
+                    <tr>
+                        <td style="background-color: #4587e4;color:white">@x.AD_SOYAD</td>
+                        <td>@x.CRM_SINAVSONUC.TYT_PUAN</td>
+                        <td>@x.CRM_SINAVSONUC.TYT_SIRALAMA</td>
+                        <td>@x.CRM_SINAVSONUC.AYT_SAY_P</td>
+                        <td>@x.CRM_SINAVSONUC.AYT_SAY_S</td>
+                        <td>@x.CRM_SINAVSONUC.AYT_EA_P</td>
+                        <td>@x.CRM_SINAVSONUC.AYT_EA_S</td>
+                        <td>@x.CRM_SINAVSONUC.AYT_SOZ_P</td>
+                        <td>@x.CRM_SINAVSONUC.AYT_SOZ_S</td>
+                        <td>@x.CRM_SINAVSONUC.AYT_DIL_P</td>
+                        <td>@x.CRM_SINAVSONUC.AYT_DIL_S</td>
+                    </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+</body>
+</html>
+
+

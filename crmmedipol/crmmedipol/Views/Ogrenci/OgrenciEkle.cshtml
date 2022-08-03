@@ -1,0 +1,158 @@
+﻿@model crmmedipol.Models.Entity.CRM_OGRENCI
+@{
+    ViewBag.Title = "OgrenciEkle";
+    Layout = "~/Views/Shared/LayoutKullanici.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-form">
+                    <form method="POST" class="register-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <h3 style="text-align:center">Öğrenci Bilgileri</h3>
+                                <br />
+                                <div class="form-input">
+                                    <h6 for="ad_soyad" class="required" style="border-style:solid;background-color:#172c4a;color:white"><b>Ad Soyad</b></h6>
+                                    @Html.TextBoxFor(x => x.AD_SOYAD, new { @class = "form-control" })
+                                    <br />
+                                </div>
+                                <div class="form-input">
+                                    <h6 for="mail" class="required" style="border-style:solid;background-color:#172c4a;color:white"><b>Mail</b></h6>
+                                    @Html.TextBoxFor(x => x.MAIL, new { @class = "form-control" })
+                                    <br />
+                                </div>
+                                <div class="form-input">
+                                    <h6 for="telefon" class="required" style="border-style:solid;background-color:#172c4a;color:white"><b>Telefon</b></h6>
+                                    @Html.TextBoxFor(x => x.TELEFON, new { @class = "form-control" })
+                                    <br />
+                                </div>
+                                <div class="form-select">
+                                    <h6 for="sehir" class="required" style="border-style:solid;background-color:#172c4a;color:white"><b>Şehir</b></h6>
+                                    @Html.DropDownListFor(x => x.SEHIR, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                                    <br />
+                                </div>
+                                <h6 for="aciklama1" class="required" style="border-style:solid;background-color:#172c4a;color:white"><b>Açıklama #1</b></h6>
+                                <div class="form-input">
+                                    @Html.TextAreaFor(x => x.ACIKLAMA_1, new { @rows = "3", @cols = "30" })
+                                </div>
+                                <h6 for="aciklama2" class="required" style="border-style:solid;background-color:#172c4a;color:white"><b>Açıklama #2</b></h6>
+                                <div class="form-input">
+                                    @Html.TextAreaFor(x => x.ACIKLAMA_2, new { @rows = "3", @cols = "30" })
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-left:32px">
+                                <h3 style="text-align:center">Okul Bilgileri</h3>
+                                <br />
+                                <div class="form-radio">
+                                    <div class="label-flex">
+                                        <h6 style="border-style:solid;background-color:#172c4a;color:white"><b>Öğrenim Durumu</b></h6>
+                                    </div>
+                                    <div class="form-radio-group">
+                                        <div>
+                                            @Html.RadioButtonFor(x => x.CRM_OKUL.OGRENIMDURUM, "Önlisans")
+                                            <label for="onlisans">Ön Lisans</label><br />
+                                            @Html.RadioButtonFor(x => x.CRM_OKUL.OGRENIMDURUM, "Lisans")
+                                            <label for="lisans">Lisans</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-input">
+                                    <h6 for="lise" class="required" style="border-style:solid;background-color:#172c4a;color:white"><b>Mezun Olduğu Lise</b></h6>
+                                    @Html.TextBoxFor(x => x.CRM_OKUL.MEZUNLISE, new { @class = "form-control" })
+                                    <br />
+                                </div>
+                                <div class="form-input">
+                                    <h6 for="bolum" class="required" style="border-style:solid;background-color:#172c4a;color:white"><b>Bölüm</b></h6>
+                                    @Html.DropDownListFor(x => x.CRM_OKUL.BOLUM, (List<SelectListItem>)ViewBag.dgr4, new { @class = "form-control" })
+                                    <br />
+                                </div>
+                            </div>
+                            <div class="form-group" style="margin-left:32px">
+                                <h3 style="text-align:center">Sınav Sonuç Bilgileri</h3>
+                                <br />
+                                <h5 style="border-style:solid;background-color:#172c4a;color:white;text-align:center"><b>TYT</b></h5>
+                                <label for="puan" class="required">Puan (örn. 123,120)</label>
+                                <label for="siralama" class="required" style="margin-left:95px">Sıralama</label>
+                                <div class="form-input">
+                                    @Html.TextAreaFor(x => x.CRM_SINAVSONUC.TYT_PUAN, new { @rows = "3" })
+                                    @Html.TextAreaFor(x => x.CRM_SINAVSONUC.TYT_SIRALAMA, new { @rows = "3", @style = "margin-left:72px" })
+                                </div>
+                                <br />
+                                <h5 style="border-style:solid;background-color:#172c4a;color:white;text-align:center"><b>AYT</b></h5>
+                                <div class="form-input">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>Puan (örn. 123,120)</td>
+                                            <td>Sıralama</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SAY</td>
+                                            <td>@Html.TextBoxFor(x => x.CRM_SINAVSONUC.AYT_SAY_P)</td>
+                                            <td>@Html.TextBoxFor(x => x.CRM_SINAVSONUC.AYT_SAY_S, new { @type = "number" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td>EA</td>
+                                            <td>@Html.TextBoxFor(x => x.CRM_SINAVSONUC.AYT_EA_P)</td>
+                                            <td>@Html.TextBoxFor(x => x.CRM_SINAVSONUC.AYT_EA_S, new { @type = "number" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SÖZ</td>
+                                            <td>@Html.TextBoxFor(x => x.CRM_SINAVSONUC.AYT_SOZ_P)</td>
+                                            <td>@Html.TextBoxFor(x => x.CRM_SINAVSONUC.AYT_SOZ_S, new { @type = "number" })</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DİL</td>
+                                            <td>@Html.TextBoxFor(x => x.CRM_SINAVSONUC.AYT_DIL_P)</td>
+                                            <td>@Html.TextBoxFor(x => x.CRM_SINAVSONUC.AYT_DIL_S, new { @type = "number" })</td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-submit" style="margin-bottom:10px;text-align:center">
+                            <input type="submit" value="Kaydet" class="btn btn-success" id="submit" />
+                            <input type="button" value="Temizle" onclick="location.href='/Ogrenci/OgrenciEkle'" class="btn btn-danger" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="../../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../dist/js/demo.js"></script>
+</body>
+</html>
+
+

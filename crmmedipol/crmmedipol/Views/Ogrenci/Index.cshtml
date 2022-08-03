@@ -1,0 +1,32 @@
+﻿@using crmmedipol.Models.Entity
+@model List<CRM_OGRENCI>
+@{
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<table class="table table-bordered">
+    <tr style="background-color:#feb217">
+        <th>ID</th>
+        <th>Ad Soyad</th>
+        <th>Mail</th>
+        <th>Telefon</th>
+        <th>Mezun Olduğu Lise</th>
+        <th>Şehir</th>
+        <th>Bölüm</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.ID</td>
+            <td>@x.AD_SOYAD</td>
+            <td>@x.MAIL</td>
+            <td>@x.TELEFON</td>
+            <td>@x.MEZUNLISE</td>
+            <td>@x.CRM_SEHIR.SEHIRADI</td>
+            <td>@x.BOLUM</td>
+        </tr>
+    }
+</table>
+<a href="/Ogrenci/OgrenciEkle" class="btn btn-info">Ekleme Sayfasına Dön</a>
+<a href="/Arama/Index" class="btn btn-success">Aramaya Dön</a>

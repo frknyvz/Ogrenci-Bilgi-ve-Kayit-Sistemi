@@ -1,0 +1,573 @@
+﻿@model crmmedipol.Models.Entity.CRM_ADMIN
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutKullanici.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/daterangepicker/daterangepicker.css">
+    <!-- fullCalendar -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fullcalendar/main.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fullcalendar-daygrid/main.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fullcalendar-timegrid/main.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fullcalendar-bootstrap/main.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <!-- Content Wrapper. Contains page content -->
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Profilim</h1>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- Widget: user widget style 1 -->
+                        <div class="card card-widget widget-user">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header" style="background-color: #172c4a">
+                                <h3 class="widget-user-username" style="color:white">@ViewBag.dgr2</h3>
+                                <h5 class="widget-user-desc" style="color:white">Sistem Yöneticisi</h5>
+                            </div>
+                            <div class="widget-user-image">
+                                <img class="img-circle elevation-2" src="@ViewBag.dgr3" alt="User Avatar">
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-sm-12 border-right">
+                                        <div class="description-block">
+                                            <h5 class="description-header">ANKARA</h5>
+                                            <span class="description-text">MEDİPOL ÜNİVERSİTESİ</span>
+                                        </div>
+                                        <!-- /.description-block -->
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header p-2">
+                                <ul class="nav nav-pills">
+                                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab" style="background-color: #172c4a">Bilgilerim</a></li>
+                                </ul>
+                            </div><!-- /.card-header -->
+                            <div class="card-body">
+                                <div class="tab-content">
+                                    <div class="tab-pane" id="settings">
+                                        @using (Html.BeginForm("Index2", "Profil", FormMethod.Post))
+                                        {
+                                            <form class="form-horizontal">
+                                                <div class="form-group row">
+                                                    <label for="inputName" class="col-sm-2 col-form-label">Ad-Soyad</label>
+                                                    <div class="col-sm-10">
+                                                        @Html.TextBoxFor(x => x.ADSOYAD, new { @readonly = "readonly", @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputName" class="col-sm-2 col-form-label">Kullanıcı Adı</label>
+                                                    <div class="col-sm-10">
+                                                        @Html.TextBoxFor(x => x.KULLANICIADI, new { @readonly = "readonly", @class = "form-control" })
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="inputName" class="col-sm-2 col-form-label">Şifre</label>
+                                                    <div class="col-sm-10">
+                                                        @Html.TextBoxFor(x => x.SIFRE, new { @class = "form-control", @readonly = "readonly", @type = "password" })
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        }
+                                    </div>
+
+                                    <!-- /.tab-pane -->
+                                </div>
+                                <!-- /.tab-content -->
+                            </div><!-- /.card-body -->
+                        </div>
+                        <!-- /.nav-tabs-custom -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+                    <section class="col-lg-14 connectedSortable">
+                        <div class="card bg-gradient-success">
+                            <div class="card-header border-0 ui-sortable-handle">
+
+                                <h3 class="card-title">
+                                    <i class="far fa-calendar-alt"></i>
+                                     Takvim
+                                </h3>
+                                <!-- tools card -->
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                                <!-- /. tools -->
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body pt-0">
+                                <!--The calendar -->
+                                <div id="calendar" style="width: 100%">
+                                    <div class="bootstrap-datetimepicker-widget usetwentyfour">
+                                        <ul class="list-unstyled">
+                                            <li class="show">
+                                                <div class="datepicker">
+                                                    <div class="datepicker-days" style="">
+                                                        <table class="table table-sm">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="prev" data-action="previous">
+                                                                        <span class="fa fa-chevron-left" title="Previous Month">
+                                                                        </span>
+                                                                    </th>
+                                                                    <th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Month">Eylül 2021</th>
+                                                                    <th class="next" data-action="next">
+                                                                        <span class="fa fa-chevron-right" title="Next Month">
+                                                                        </span>
+                                                                    </th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="dow">Paz</th>
+                                                                    <th class="dow">Pzt</th>
+                                                                    <th class="dow">Sa</th>
+                                                                    <th class="dow">Çrş</th>
+                                                                    <th class="dow">Prş</th>
+                                                                    <th class="dow">Cu</th>
+                                                                    <th class="dow">Cmts</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td data-action="selectDay" data-day="08/29/2021" class="day old weekend">29</td>
+                                                                    <td data-action="selectDay" data-day="08/30/2021" class="day old">30</td>
+                                                                    <td data-action="selectDay" data-day="08/31/2021" class="day old">31</td>
+                                                                    <td data-action="selectDay" data-day="09/01/2021" class="day">1</td>
+                                                                    <td data-action="selectDay" data-day="09/02/2021" class="day">2</td>
+                                                                    <td data-action="selectDay" data-day="09/03/2021" class="day">3</td>
+                                                                    <td data-action="selectDay" data-day="09/04/2021" class="day weekend">4</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td data-action="selectDay" data-day="09/05/2021" class="day weekend">5</td>
+                                                                    <td data-action="selectDay" data-day="09/06/2021" class="day">6</td>
+                                                                    <td data-action="selectDay" data-day="09/07/2021" class="day">7</td>
+                                                                    <td data-action="selectDay" data-day="09/08/2021" class="day">8</td>
+                                                                    <td data-action="selectDay" data-day="09/09/2021" class="day">9</td>
+                                                                    <td data-action="selectDay" data-day="09/10/2021" class="day active today">10</td>
+                                                                    <td data-action="selectDay" data-day="09/11/2021" class="day weekend">11</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td data-action="selectDay" data-day="09/12/2021" class="day weekend">12</td>
+                                                                    <td data-action="selectDay" data-day="09/13/2021" class="day">13</td>
+                                                                    <td data-action="selectDay" data-day="09/14/2021" class="day">14</td>
+                                                                    <td data-action="selectDay" data-day="09/15/2021" class="day">15</td>
+                                                                    <td data-action="selectDay" data-day="09/16/2021" class="day">16</td>
+                                                                    <td data-action="selectDay" data-day="09/17/2021" class="day">17</td>
+                                                                    <td data-action="selectDay" data-day="09/18/2021" class="day weekend">18</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td data-action="selectDay" data-day="09/19/2021" class="day weekend">19</td>
+                                                                    <td data-action="selectDay" data-day="09/20/2021" class="day">20</td>
+                                                                    <td data-action="selectDay" data-day="09/21/2021" class="day">21</td>
+                                                                    <td data-action="selectDay" data-day="09/22/2021" class="day">22</td>
+                                                                    <td data-action="selectDay" data-day="09/23/2021" class="day">23</td>
+                                                                    <td data-action="selectDay" data-day="09/24/2021" class="day">24</td>
+                                                                    <td data-action="selectDay" data-day="09/25/2021" class="day weekend">25</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td data-action="selectDay" data-day="09/26/2021" class="day weekend">26</td>
+                                                                    <td data-action="selectDay" data-day="09/27/2021" class="day">27</td>
+                                                                    <td data-action="selectDay" data-day="09/28/2021" class="day">28</td>
+                                                                    <td data-action="selectDay" data-day="09/29/2021" class="day">29</td>
+                                                                    <td data-action="selectDay" data-day="09/30/2021" class="day">30</td>
+                                                                    <td data-action="selectDay" data-day="10/01/2021" class="day new">1</td>
+                                                                    <td data-action="selectDay" data-day="10/02/2021" class="day new weekend">2</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td data-action="selectDay" data-day="10/03/2021" class="day new weekend">3</td>
+                                                                    <td data-action="selectDay" data-day="10/04/2021" class="day new">4</td>
+                                                                    <td data-action="selectDay" data-day="10/05/2021" class="day new">5</td>
+                                                                    <td data-action="selectDay" data-day="10/06/2021" class="day new">6</td>
+                                                                    <td data-action="selectDay" data-day="10/07/2021" class="day new">7</td>
+                                                                    <td data-action="selectDay" data-day="10/08/2021" class="day new">8</td>
+                                                                    <td data-action="selectDay" data-day="10/09/2021" class="day new weekend">9</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="datepicker-months" style="display: none;">
+                                                        <table class="table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="prev" data-action="previous">
+                                                                        <span class="fa fa-chevron-left" title="Previous Year"></span>
+                                                                    </th>
+                                                                    <th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Year">2021</th>
+                                                                    <th class="next" data-action="next">
+                                                                        <span class="fa fa-chevron-right" title="Next Year"></span>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="7">
+                                                                        <span data-action="selectMonth" class="month">Ocak</span>
+                                                                        <span data-action="selectMonth" class="month">Şub</span>
+                                                                        <span data-action="selectMonth" class="month">Mart</span>
+                                                                        <span data-action="selectMonth" class="month">Nis</span>
+                                                                        <span data-action="selectMonth" class="month">May</span>
+                                                                        <span data-action="selectMonth" class="month">Haz</span>
+                                                                        <span data-action="selectMonth" class="month">Tem</span>
+                                                                        <span data-action="selectMonth" class="month">Ağu</span>
+                                                                        <span data-action="selectMonth" class="month active">Eyl</span>
+                                                                        <span data-action="selectMonth" class="month">Ekim</span>
+                                                                        <span data-action="selectMonth" class="month">Kas</span>
+                                                                        <span data-action="selectMonth" class="month">Ara</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="datepicker-years" style="display: none;">
+                                                        <table class="table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="prev" data-action="previous">
+                                                                        <span class="fa fa-chevron-left" title="Previous Decade"></span>
+                                                                    </th>
+                                                                    <th class="picker-switch" data-action="pickerSwitch" colspan="5" title="Select Decade">2020-2029</th>
+                                                                    <th class="next" data-action="next"><span class="fa fa-chevron-right" title="Next Decade"></span></th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="7">
+                                                                        <span data-action="selectYear" class="year old">2019</span>
+                                                                        <span data-action="selectYear" class="year">2020</span>
+                                                                        <span data-action="selectYear" class="year active">2021</span>
+                                                                        <span data-action="selectYear" class="year">2022</span>
+                                                                        <span data-action="selectYear" class="year">2023</span>
+                                                                        <span data-action="selectYear" class="year">2024</span>
+                                                                        <span data-action="selectYear" class="year">2025</span>
+                                                                        <span data-action="selectYear" class="year">2026</span>
+                                                                        <span data-action="selectYear" class="year">2027</span>
+                                                                        <span data-action="selectYear" class="year">2028</span>
+                                                                        <span data-action="selectYear" class="year">2029</span>
+                                                                        <span data-action="selectYear" class="year old">2030</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="datepicker-decades" style="display: none;">
+                                                        <table class="table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th class="prev" data-action="previous">
+                                                                        <span class="fa fa-chevron-left" title="Previous Century"></span>
+                                                                    </th>
+                                                                    <th class="picker-switch" data-action="pickerSwitch" colspan="5">2000-2090</th>
+                                                                    <th class="next" data-action="next">
+                                                                        <span class="fa fa-chevron-right" title="Next Century"></span>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td colspan="7">
+                                                                        <span data-action="selectDecade" class="decade old" data-selection="2006">1990</span>
+                                                                        <span data-action="selectDecade" class="decade" data-selection="2006">2000</span>
+                                                                        <span data-action="selectDecade" class="decade active" data-selection="2016">2010</span>
+                                                                        <span data-action="selectDecade" class="decade active" data-selection="2026">2020</span>
+                                                                        <span data-action="selectDecade" class="decade" data-selection="2036">2030</span>
+                                                                        <span data-action="selectDecade" class="decade" data-selection="2046">2040</span>
+                                                                        <span data-action="selectDecade" class="decade" data-selection="2056">2050</span>
+                                                                        <span data-action="selectDecade" class="decade" data-selection="2066">2060</span>
+                                                                        <span data-action="selectDecade" class="decade" data-selection="2076">2070</span>
+                                                                        <span data-action="selectDecade" class="decade" data-selection="2086">2080</span>
+                                                                        <span data-action="selectDecade" class="decade" data-selection="2096">2090</span>
+                                                                        <span data-action="selectDecade" class="decade old" data-selection="2106">2100</span>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="picker-switch accordion-toggle"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </section>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+        <!-- /.content-wrapper -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+    </div>
+    <!-- jQuery -->
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/AdminLTE-3.0.4/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/AdminLTE-3.0.4/plugins/sparklines/sparkline.js"></script>
+    <!-- jQuery UI -->
+    <script src="~/AdminLTE-3.0.4/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- JQVMap -->
+    <script src="~/AdminLTE-3.0.4/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/AdminLTE-3.0.4/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/AdminLTE-3.0.4/plugins/moment/moment.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/AdminLTE-3.0.4/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/AdminLTE-3.0.4/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/AdminLTE-3.0.4//dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+    <!-- fullCalendar 2.2.5 -->
+    <script src="~/AdminLTE-3.0.4/plugins/moment/moment.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/fullcalendar/main.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/fullcalendar-daygrid/main.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/fullcalendar-timegrid/main.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/fullcalendar-interaction/main.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/fullcalendar-bootstrap/main.min.js"></script>
+
+    <script>
+        $(function () {
+
+            /* initialize the external events
+             -----------------------------------------------------------------*/
+            function ini_events(ele) {
+                ele.each(function () {
+
+                    // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
+                    // it doesn't need to have a start or end
+                    var eventObject = {
+                        title: $.trim($(this).text()) // use the element's text as the event title
+                    }
+
+                    // store the Event Object in the DOM element so we can get to it later
+                    $(this).data('eventObject', eventObject)
+
+                    // make the event draggable using jQuery UI
+                    $(this).draggable({
+                        zIndex: 1070,
+                        revert: true, // will cause the event to go back to its
+                        revertDuration: 0  //  original position after the drag
+                    })
+
+                })
+            }
+
+            ini_events($('#external-events div.external-event'))
+
+            /* initialize the calendar
+             -----------------------------------------------------------------*/
+            //Date for the calendar events (dummy data)
+            var date = new Date()
+            var d = date.getDate(),
+                m = date.getMonth(),
+                y = date.getFullYear()
+
+            var Calendar = FullCalendar.Calendar;
+            var Draggable = FullCalendarInteraction.Draggable;
+
+            var containerEl = document.getElementById('external-events');
+            var checkbox = document.getElementById('drop-remove');
+            var calendarEl = document.getElementById('calendar');
+
+            // initialize the external events
+            // -----------------------------------------------------------------
+
+            new Draggable(containerEl, {
+                itemSelector: '.external-event',
+                eventData: function (eventEl) {
+                    console.log(eventEl);
+                    return {
+                        title: eventEl.innerText,
+                        backgroundColor: window.getComputedStyle(eventEl, null).getPropertyValue('background-color'),
+                        borderColor: window.getComputedStyle(eventEl, null).getPropertyValue('background-color'),
+                        textColor: window.getComputedStyle(eventEl, null).getPropertyValue('color'),
+                    };
+                }
+            });
+
+            var calendar = new Calendar(calendarEl, {
+                plugins: ['bootstrap', 'interaction', 'dayGrid', 'timeGrid'],
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                'themeSystem': 'bootstrap',
+                //Random default events
+                events: [
+                    {
+                        title: 'All Day Event',
+                        start: new Date(y, m, 1),
+                        backgroundColor: '#f56954', //red
+                        borderColor: '#f56954', //red
+                        allDay: true
+                    },
+                    {
+                        title: 'Long Event',
+                        start: new Date(y, m, d - 5),
+                        end: new Date(y, m, d - 2),
+                        backgroundColor: '#f39c12', //yellow
+                        borderColor: '#f39c12' //yellow
+                    },
+                    {
+                        title: 'Meeting',
+                        start: new Date(y, m, d, 10, 30),
+                        allDay: false,
+                        backgroundColor: '#0073b7', //Blue
+                        borderColor: '#0073b7' //Blue
+                    },
+                    {
+                        title: 'Lunch',
+                        start: new Date(y, m, d, 12, 0),
+                        end: new Date(y, m, d, 14, 0),
+                        allDay: false,
+                        backgroundColor: '#00c0ef', //Info (aqua)
+                        borderColor: '#00c0ef' //Info (aqua)
+                    },
+                    {
+                        title: 'Birthday Party',
+                        start: new Date(y, m, d + 1, 19, 0),
+                        end: new Date(y, m, d + 1, 22, 30),
+                        allDay: false,
+                        backgroundColor: '#00a65a', //Success (green)
+                        borderColor: '#00a65a' //Success (green)
+                    },
+                    {
+                        title: 'Click for Google',
+                        start: new Date(y, m, 28),
+                        end: new Date(y, m, 29),
+                        url: 'http://google.com/',
+                        backgroundColor: '#3c8dbc', //Primary (light-blue)
+                        borderColor: '#3c8dbc' //Primary (light-blue)
+                    }
+                ],
+                editable: true,
+                droppable: true, // this allows things to be dropped onto the calendar !!!
+                drop: function (info) {
+                    // is the "remove after drop" checkbox checked?
+                    if (checkbox.checked) {
+                        // if so, remove the element from the "Draggable Events" list
+                        info.draggedEl.parentNode.removeChild(info.draggedEl);
+                    }
+                }
+            });
+
+            calendar.render();
+            // $('#calendar').fullCalendar()
+
+            /* ADDING EVENTS */
+            var currColor = '#3c8dbc' //Red by default
+            //Color chooser button
+            var colorChooser = $('#color-chooser-btn')
+            $('#color-chooser > li > a').click(function (e) {
+                e.preventDefault()
+                //Save color
+                currColor = $(this).css('color')
+                //Add color effect to button
+                $('#add-new-event').css({
+                    'background-color': currColor,
+                    'border-color': currColor
+                })
+            })
+            $('#add-new-event').click(function (e) {
+                e.preventDefault()
+                //Get value and make sure it is not null
+                var val = $('#new-event').val()
+                if (val.length == 0) {
+                    return
+                }
+
+                //Create events
+                var event = $('<div />')
+                event.css({
+                    'background-color': currColor,
+                    'border-color': currColor,
+                    'color': '#fff'
+                }).addClass('external-event')
+                event.html(val)
+                $('#external-events').prepend(event)
+
+                //Add draggable funtionality
+                ini_events(event)
+
+                //Remove event from text input
+                $('#new-event').val('')
+            })
+        })
+    </script>
+</body>
+</html>
+
+
+

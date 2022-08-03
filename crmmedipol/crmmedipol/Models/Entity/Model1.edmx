@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CRMMEDIPOLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CRM_ADMIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KULLANICIADI" Type="varchar" MaxLength="30" />
+          <Property Name="SIFRE" Type="varchar" MaxLength="20" />
+          <Property Name="ADSOYAD" Type="varchar" MaxLength="30" />
+          <Property Name="FOTO" Type="varchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="CRM_BOLUM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BOLUMADI" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CRM_ILETISIM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ADSOYAD" Type="varchar" MaxLength="40" />
+          <Property Name="MAIL" Type="varchar" MaxLength="30" />
+          <Property Name="TELEFON" Type="varchar" MaxLength="20" />
+          <Property Name="BIRIM" Type="varchar" MaxLength="50" />
+          <Property Name="KONU" Type="varchar" MaxLength="50" />
+          <Property Name="MESAJ" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CRM_OGRENCI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD SOYAD" Type="varchar" MaxLength="40" />
+          <Property Name="MAIL" Type="varchar" MaxLength="30" />
+          <Property Name="TELEFON" Type="varchar" MaxLength="20" />
+          <Property Name="SEHIR" Type="tinyint" />
+          <Property Name="ACIKLAMA_1" Type="varchar(max)" />
+          <Property Name="ACIKLAMA_2" Type="varchar(max)" />
+          <Property Name="OGR_OKUL" Type="tinyint" />
+          <Property Name="OGR_SINAV" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="CRM_OKUL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OGRENIMDURUM" Type="varchar" MaxLength="50" />
+          <Property Name="MEZUNLISE" Type="varchar" MaxLength="50" />
+          <Property Name="BOLUM" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="CRM_SEHIR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SEHIRADI" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CRM_SINAVSONUC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TYT_PUAN" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="TYT_SIRALAMA" Type="int" />
+          <Property Name="AYT_SAY_P" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="AYT_EA_P" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="AYT_SOZ_P" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="AYT_DIL_P" Type="decimal" Precision="18" Scale="3" />
+          <Property Name="AYT_SAY_S" Type="bigint" />
+          <Property Name="AYT_EA_S" Type="bigint" />
+          <Property Name="AYT_SOZ_S" Type="bigint" />
+          <Property Name="AYT_DIL_S" Type="bigint" />
+        </EntityType>
+        <Association Name="FK_CRM_KISI_CRM_SEHIR">
+          <End Role="CRM_SEHIR" Type="Self.CRM_SEHIR" Multiplicity="0..1" />
+          <End Role="CRM_OGRENCI" Type="Self.CRM_OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRM_SEHIR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CRM_OGRENCI">
+              <PropertyRef Name="SEHIR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_OGRENCI_CRM_OKUL">
+          <End Role="CRM_OKUL" Type="Self.CRM_OKUL" Multiplicity="0..1" />
+          <End Role="CRM_OGRENCI" Type="Self.CRM_OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRM_OKUL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CRM_OGRENCI">
+              <PropertyRef Name="OGR_OKUL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_OGRENCI_CRM_SINAVSONUC">
+          <End Role="CRM_SINAVSONUC" Type="Self.CRM_SINAVSONUC" Multiplicity="0..1" />
+          <End Role="CRM_OGRENCI" Type="Self.CRM_OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRM_SINAVSONUC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CRM_OGRENCI">
+              <PropertyRef Name="OGR_SINAV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CRM_OKUL_CRM_BOLUM">
+          <End Role="CRM_BOLUM" Type="Self.CRM_BOLUM" Multiplicity="0..1" />
+          <End Role="CRM_OKUL" Type="Self.CRM_OKUL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRM_BOLUM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CRM_OKUL">
+              <PropertyRef Name="BOLUM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CRMMEDIPOLModelStoreContainer">
+          <EntitySet Name="CRM_ADMIN" EntityType="Self.CRM_ADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CRM_BOLUM" EntityType="Self.CRM_BOLUM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CRM_ILETISIM" EntityType="Self.CRM_ILETISIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CRM_OGRENCI" EntityType="Self.CRM_OGRENCI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CRM_OKUL" EntityType="Self.CRM_OKUL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CRM_SEHIR" EntityType="Self.CRM_SEHIR" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CRM_SINAVSONUC" EntityType="Self.CRM_SINAVSONUC" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CRM_KISI_CRM_SEHIR" Association="Self.FK_CRM_KISI_CRM_SEHIR">
+            <End Role="CRM_SEHIR" EntitySet="CRM_SEHIR" />
+            <End Role="CRM_OGRENCI" EntitySet="CRM_OGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_OGRENCI_CRM_OKUL" Association="Self.FK_CRM_OGRENCI_CRM_OKUL">
+            <End Role="CRM_OKUL" EntitySet="CRM_OKUL" />
+            <End Role="CRM_OGRENCI" EntitySet="CRM_OGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_OGRENCI_CRM_SINAVSONUC" Association="Self.FK_CRM_OGRENCI_CRM_SINAVSONUC">
+            <End Role="CRM_SINAVSONUC" EntitySet="CRM_SINAVSONUC" />
+            <End Role="CRM_OGRENCI" EntitySet="CRM_OGRENCI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CRM_OKUL_CRM_BOLUM" Association="Self.FK_CRM_OKUL_CRM_BOLUM">
+            <End Role="CRM_BOLUM" EntitySet="CRM_BOLUM" />
+            <End Role="CRM_OKUL" EntitySet="CRM_OKUL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CRMMEDIPOLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CRM_ADMIN">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KULLANICIADI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="SIFRE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ADSOYAD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FOTO" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CRMMEDIPOLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CRM_ADMIN" EntityType="Self.CRM_ADMIN" />
+          <EntitySet Name="CRM_SEHIR" EntityType="CRMMEDIPOLModel.CRM_SEHIR" />
+          <EntitySet Name="CRM_OGRENCI" EntityType="CRMMEDIPOLModel.CRM_OGRENCI" />
+          <AssociationSet Name="FK_CRM_KISI_CRM_SEHIR1" Association="CRMMEDIPOLModel.FK_CRM_KISI_CRM_SEHIR1">
+            <End Role="CRM_SEHIR" EntitySet="CRM_SEHIR" />
+            <End Role="CRM_OGRENCI" EntitySet="CRM_OGRENCI" />
+          </AssociationSet>
+          <EntitySet Name="CRM_SINAVSONUC" EntityType="CRMMEDIPOLModel.CRM_SINAVSONUC" />
+          <AssociationSet Name="FK_CRM_OGRENCI_CRM_SINAVSONUC" Association="CRMMEDIPOLModel.FK_CRM_OGRENCI_CRM_SINAVSONUC">
+            <End Role="CRM_SINAVSONUC" EntitySet="CRM_SINAVSONUC" />
+            <End Role="CRM_OGRENCI" EntitySet="CRM_OGRENCI" />
+          </AssociationSet>
+          <EntitySet Name="CRM_OKUL" EntityType="CRMMEDIPOLModel.CRM_OKUL" />
+          <AssociationSet Name="FK_CRM_OGRENCI_CRM_OKUL" Association="CRMMEDIPOLModel.FK_CRM_OGRENCI_CRM_OKUL">
+            <End Role="CRM_OKUL" EntitySet="CRM_OKUL" />
+            <End Role="CRM_OGRENCI" EntitySet="CRM_OGRENCI" />
+          </AssociationSet>
+          <EntitySet Name="CRM_ILETISIM" EntityType="CRMMEDIPOLModel.CRM_ILETISIM" />
+          <EntitySet Name="CRM_BOLUM" EntityType="CRMMEDIPOLModel.CRM_BOLUM" />
+          <AssociationSet Name="FK_CRM_OKUL_CRM_BOLUM" Association="CRMMEDIPOLModel.FK_CRM_OKUL_CRM_BOLUM">
+            <End Role="CRM_BOLUM" EntitySet="CRM_BOLUM" />
+            <End Role="CRM_OKUL" EntitySet="CRM_OKUL" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CRM_SEHIR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SEHIRADI" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CRM_OGRENCI" Relationship="CRMMEDIPOLModel.FK_CRM_KISI_CRM_SEHIR1" FromRole="CRM_SEHIR" ToRole="CRM_OGRENCI" />
+        </EntityType>
+        <EntityType Name="CRM_OGRENCI">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD_SOYAD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="MAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFON" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SEHIR" Type="Byte" />
+          <NavigationProperty Name="CRM_SEHIR" Relationship="CRMMEDIPOLModel.FK_CRM_KISI_CRM_SEHIR1" FromRole="CRM_OGRENCI" ToRole="CRM_SEHIR" />
+          <Property Name="ACIKLAMA_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ACIKLAMA_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OGR_SINAV" Type="Byte" />
+          <NavigationProperty Name="CRM_SINAVSONUC" Relationship="CRMMEDIPOLModel.FK_CRM_OGRENCI_CRM_SINAVSONUC" FromRole="CRM_OGRENCI" ToRole="CRM_SINAVSONUC" />
+          <Property Name="OGR_OKUL" Type="Byte" />
+          <NavigationProperty Name="CRM_OKUL" Relationship="CRMMEDIPOLModel.FK_CRM_OGRENCI_CRM_OKUL" FromRole="CRM_OGRENCI" ToRole="CRM_OKUL" />
+        </EntityType>
+        <Association Name="FK_CRM_KISI_CRM_SEHIR1">
+          <End Type="CRMMEDIPOLModel.CRM_SEHIR" Role="CRM_SEHIR" Multiplicity="0..1" />
+          <End Type="CRMMEDIPOLModel.CRM_OGRENCI" Role="CRM_OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRM_SEHIR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CRM_OGRENCI">
+              <PropertyRef Name="SEHIR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CRM_SINAVSONUC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TYT_PUAN" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="TYT_SIRALAMA" Type="Int32" />
+          <Property Name="AYT_SAY_P" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="AYT_EA_P" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="AYT_SOZ_P" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="AYT_DIL_P" Type="Decimal" Precision="18" Scale="3" />
+          <Property Name="AYT_SAY_S" Type="Int64" />
+          <Property Name="AYT_EA_S" Type="Int64" />
+          <Property Name="AYT_SOZ_S" Type="Int64" />
+          <Property Name="AYT_DIL_S" Type="Int64" />
+          <NavigationProperty Name="CRM_OGRENCI" Relationship="CRMMEDIPOLModel.FK_CRM_OGRENCI_CRM_SINAVSONUC" FromRole="CRM_SINAVSONUC" ToRole="CRM_OGRENCI" />
+        </EntityType>
+        <Association Name="FK_CRM_OGRENCI_CRM_SINAVSONUC">
+          <End Type="CRMMEDIPOLModel.CRM_SINAVSONUC" Role="CRM_SINAVSONUC" Multiplicity="0..1" />
+          <End Type="CRMMEDIPOLModel.CRM_OGRENCI" Role="CRM_OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRM_SINAVSONUC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CRM_OGRENCI">
+              <PropertyRef Name="OGR_SINAV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CRM_OKUL">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MEZUNLISE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BOLUM" Type="Byte" />
+          <NavigationProperty Name="CRM_OGRENCI" Relationship="CRMMEDIPOLModel.FK_CRM_OGRENCI_CRM_OKUL" FromRole="CRM_OKUL" ToRole="CRM_OGRENCI" />
+          <Property Name="OGRENIMDURUM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CRM_BOLUM" Relationship="CRMMEDIPOLModel.FK_CRM_OKUL_CRM_BOLUM" FromRole="CRM_OKUL" ToRole="CRM_BOLUM" />
+        </EntityType>
+        <Association Name="FK_CRM_OGRENCI_CRM_OKUL">
+          <End Type="CRMMEDIPOLModel.CRM_OKUL" Role="CRM_OKUL" Multiplicity="0..1" />
+          <End Type="CRMMEDIPOLModel.CRM_OGRENCI" Role="CRM_OGRENCI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRM_OKUL">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CRM_OGRENCI">
+              <PropertyRef Name="OGR_OKUL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CRM_ILETISIM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ADSOYAD" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="MAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFON" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BIRIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="KONU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MESAJ" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CRM_BOLUM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BOLUMADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CRM_OKUL" Relationship="CRMMEDIPOLModel.FK_CRM_OKUL_CRM_BOLUM" FromRole="CRM_BOLUM" ToRole="CRM_OKUL" />
+        </EntityType>
+        <Association Name="FK_CRM_OKUL_CRM_BOLUM">
+          <End Type="CRMMEDIPOLModel.CRM_BOLUM" Role="CRM_BOLUM" Multiplicity="0..1" />
+          <End Type="CRMMEDIPOLModel.CRM_OKUL" Role="CRM_OKUL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CRM_BOLUM">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CRM_OKUL">
+              <PropertyRef Name="BOLUM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CRMMEDIPOLModelStoreContainer" CdmEntityContainer="CRMMEDIPOLEntities">
+          <EntitySetMapping Name="CRM_ADMIN">
+            <EntityTypeMapping TypeName="CRMMEDIPOLModel.CRM_ADMIN">
+              <MappingFragment StoreEntitySet="CRM_ADMIN">
+                <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+                <ScalarProperty Name="ADSOYAD" ColumnName="ADSOYAD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="KULLANICIADI" ColumnName="KULLANICIADI" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRM_SEHIR">
+            <EntityTypeMapping TypeName="CRMMEDIPOLModel.CRM_SEHIR">
+              <MappingFragment StoreEntitySet="CRM_SEHIR">
+                <ScalarProperty Name="SEHIRADI" ColumnName="SEHIRADI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRM_OGRENCI">
+            <EntityTypeMapping TypeName="CRMMEDIPOLModel.CRM_OGRENCI">
+              <MappingFragment StoreEntitySet="CRM_OGRENCI">
+                <ScalarProperty Name="OGR_OKUL" ColumnName="OGR_OKUL" />
+                <ScalarProperty Name="OGR_SINAV" ColumnName="OGR_SINAV" />
+                <ScalarProperty Name="ACIKLAMA_2" ColumnName="ACIKLAMA_2" />
+                <ScalarProperty Name="ACIKLAMA_1" ColumnName="ACIKLAMA_1" />
+                <ScalarProperty Name="SEHIR" ColumnName="SEHIR" />
+                <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="AD_SOYAD" ColumnName="AD SOYAD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRM_SINAVSONUC">
+            <EntityTypeMapping TypeName="CRMMEDIPOLModel.CRM_SINAVSONUC">
+              <MappingFragment StoreEntitySet="CRM_SINAVSONUC">
+                <ScalarProperty Name="AYT_DIL_S" ColumnName="AYT_DIL_S" />
+                <ScalarProperty Name="AYT_SOZ_S" ColumnName="AYT_SOZ_S" />
+                <ScalarProperty Name="AYT_EA_S" ColumnName="AYT_EA_S" />
+                <ScalarProperty Name="AYT_SAY_S" ColumnName="AYT_SAY_S" />
+                <ScalarProperty Name="AYT_DIL_P" ColumnName="AYT_DIL_P" />
+                <ScalarProperty Name="AYT_SOZ_P" ColumnName="AYT_SOZ_P" />
+                <ScalarProperty Name="AYT_EA_P" ColumnName="AYT_EA_P" />
+                <ScalarProperty Name="AYT_SAY_P" ColumnName="AYT_SAY_P" />
+                <ScalarProperty Name="TYT_SIRALAMA" ColumnName="TYT_SIRALAMA" />
+                <ScalarProperty Name="TYT_PUAN" ColumnName="TYT_PUAN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRM_OKUL">
+            <EntityTypeMapping TypeName="CRMMEDIPOLModel.CRM_OKUL">
+              <MappingFragment StoreEntitySet="CRM_OKUL">
+                <ScalarProperty Name="OGRENIMDURUM" ColumnName="OGRENIMDURUM" />
+                <ScalarProperty Name="BOLUM" ColumnName="BOLUM" />
+                <ScalarProperty Name="MEZUNLISE" ColumnName="MEZUNLISE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRM_ILETISIM">
+            <EntityTypeMapping TypeName="CRMMEDIPOLModel.CRM_ILETISIM">
+              <MappingFragment StoreEntitySet="CRM_ILETISIM">
+                <ScalarProperty Name="MESAJ" ColumnName="MESAJ" />
+                <ScalarProperty Name="KONU" ColumnName="KONU" />
+                <ScalarProperty Name="BIRIM" ColumnName="BIRIM" />
+                <ScalarProperty Name="TELEFON" ColumnName="TELEFON" />
+                <ScalarProperty Name="MAIL" ColumnName="MAIL" />
+                <ScalarProperty Name="ADSOYAD" ColumnName="ADSOYAD" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CRM_BOLUM">
+            <EntityTypeMapping TypeName="CRMMEDIPOLModel.CRM_BOLUM">
+              <MappingFragment StoreEntitySet="CRM_BOLUM">
+                <ScalarProperty Name="BOLUMADI" ColumnName="BOLUMADI" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

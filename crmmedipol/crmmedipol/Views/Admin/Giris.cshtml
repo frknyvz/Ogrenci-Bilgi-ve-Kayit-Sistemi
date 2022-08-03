@@ -1,0 +1,111 @@
+﻿@model crmmedipol.Models.Entity.CRM_ADMIN
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/weblogin/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/weblogin/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/weblogin/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/weblogin/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/weblogin/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/weblogin/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/weblogin/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/weblogin/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+    <div class="limiter" style="margin-bottom:250px">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt>
+                    <img src="~/weblogin/images/medipol.jpg" alt="IMG" width="316" height="289">
+                </div>
+                @using (Html.BeginForm("Giris", "Admin", FormMethod.Post))
+                {
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title" style="font-size:30px">
+                           Yönetici Girişi<br />
+                        </span>
+                        <div style="margin-bottom:20px;font-size:14px;text-align:center">
+                            Hesabınızla giriş yapınız
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                            @Html.TextBoxFor(x => x.KULLANICIADI, new { @class = "input100", @placeholder = "Kullanıcı Adı", @autofocus = "autofocus" })
+                            @*<input class="input100" type="text" name="KULLANICIADI" placeholder="Kullanıcı Adı" autofocus="autofocus">*@
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Password is required">
+                            @Html.TextBoxFor(x => x.SIFRE, new { @class = "input100", @type = "password", @placeholder = "Şifre" })
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                            </span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">
+                                GİRİŞ
+                            </button>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <input type="button" value="E Devlet ile GİRİŞ" onclick="location.href='https://giris.turkiye.gov.tr/Giris/gir?oauthClientId=016e671d-18b3-4558-933e-dadbac3ba0e8&continue=https%3A%2F%2Fgiris.turkiye.gov.tr%2FOAuth2AuthorizationServer%2FAuthorizationController%3Fresponse_type%3Dcode%26client_id%3D016e671d-18b3-4558-933e-dadbac3ba0e8%26state%3Dedevlet_mebis_giris%26scope%3DKimlik-Dogrula%253BAd-Soyad%26redirect_uri%3Dhttps%253A%252F%252Fmebis.ankaramedipol.edu.tr%252FLogin%252FEDevletGiris'"
+                                   class="login100-form-btn" />
+                        </div>
+
+                        <div class="text-center p-t-12">
+                            <a class="txt2" href="/Admin/SifreSifirla/">
+                                Şifremi Unuttum
+                            </a>
+                        </div>
+                        <div class="social-auth-links text-center mb-5" style="margin-left:32px;margin-top:10px">
+                            <a href="https://www.facebook.com/medipolankara/"><i class="fa fa-facebook mr-4"></i></a>
+                            <a href="https://twitter.com/AnkaraMedipol"><i class="fa fa-twitter mr-4"></i></a>
+                            <a href="mailto:bilgi@ankaramedipol.edu.tr"><i class="fa fa-envelope mr-4"></i></a>
+                            <a href="https://www.youtube.com/channel/UCwRrTac4ddj3AoycV76TfdA"><i class="fa fa-youtube mr-4"></i></a>
+                            <a href="https://www.instagram.com/medipolankara/"><i class="fa fa-instagram mr-4"></i></a>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--===============================================================================================-->
+    <script src="~/weblogin/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/weblogin/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/weblogin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/weblogin/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/weblogin/vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/weblogin/js/main.js"></script>
+
+</body>
+</html>

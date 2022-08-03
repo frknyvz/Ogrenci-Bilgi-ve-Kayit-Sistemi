@@ -1,0 +1,232 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bbootstrap 4 -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="background-color:#ffffff">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Profil/Hosgeldiniz/" class="nav-link"><i class="fas fa-home"></i>&nbsp; Ana Sayfa</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-arrow-down"></i>&nbsp; Online İşlemler
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                        <a href="https://mebis.ankaramedipol.edu.tr" class="dropdown-item">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="dropdown-item-title">
+                                        <i class="fas fa-book"></i>
+                                        &nbsp; MEBİS
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="https://login.microsoftonline.com/common/oauth2/authorize" class="dropdown-item">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="dropdown-item-title">
+                                        <i class="fas fa-envelope"></i>
+                                        &nbsp; Webmail Outlook
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="https://ankaramedipol.edu.tr/online-islemler/" class="dropdown-item">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="dropdown-item-title">
+                                        <i class="fas fa-pen"></i>
+                                        &nbsp; Online İşlemler
+                                    </h4>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/Profil/Iletisim/" class="nav-link"><i class="fas fa-phone"></i>&nbsp; İletişim</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #172c4a">
+            <a href="/Profil/Hosgeldiniz/" class="brand-link" style="background-color: #172c4a">
+                <img src="~/colorlib-regform-2/images/logoyenii.png" alt="" class="brand-image img-circle elevation-3"
+                     style="opacity: 3.8;width:35px;height:46px">
+                <span class="brand-text font-weight-light" onclick="location.href='/Profil/Index'">
+                    Medipol- MEBİS
+                </span>
+            </a>
+
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image" style="text-align:center">
+                        <img src="@ViewBag.dgr3" class="img-circle elevation-2" alt="" style="width:60px;height:65px">
+                        <br /><br />
+                        <a href="/Profil/Index/" class="d-block" style="margin-left:9px">@ViewBag.dgr2 - Yönetici</a>
+                    </div>
+                        
+                </div>
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="/Profil/Hosgeldiniz/" class="nav-link">
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    Ana Sayfa
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Profil/Index/" class="nav-link">
+                                <i class="nav-icon fas fa-id-badge"></i>
+                                <p>
+                                    Profilim
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Ogrenci/OgrenciEkle/" class="nav-link">
+                                <i class="nav-icon fas fa-user-graduate"></i>
+                                <p>
+                                    Öğrenci Kayıt
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Ogrenci/OgrenciAra/" class="nav-link">
+                                <i class="nav-icon fas fa-search"></i>
+                                <p>
+                                    Öğrenci Ara
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/Ogrenci/CikisYap/" class="nav-link">
+                                <i class="nav-icon fas fa-door-open"></i>
+                                <p>
+                                    Çıkış Yap
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /.sidebar-menu -->
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <section class="content">
+                    <div class="container-fluid">
+                        @RenderBody()
+                    </div><!-- /.container-fluid -->
+                </section>
+                <!-- /.content -->
+            </div>
+        </div>
+        <footer class="main-footer">
+            <strong>
+                &copy; 2018, Ankara Medipol Üniversitesi |
+                <a href="https://ankaramedipol.edu.tr/universite/genel-sekreterlik/bilgi-teknolojileri-dairesi/">Bilgi Teknolojileri Daire Bşk. </a>|
+                <a href="https://ankaramedipol.edu.tr/universite/gizlilik/">Gizlilik </a>|
+                <a href="https://ankaramedipol.edu.tr/kvkk/">KVKK </a>|
+            </strong>
+            <div class="float-right d-none d-sm-inline-block">
+                <b style="color:#0044ff">444 20 10&nbsp;</b>
+                <a href="https://www.facebook.com/medipolankara/"><i class="fab fa-facebook mr-2"></i></a>
+                <a href="https://twitter.com/AnkaraMedipol"><i class="fab fa-twitter mr-2"></i></a>
+                <a href="mailto:bilgi@ankaramedipol.edu.tr"><i class="fa fa-envelope mr-2"></i></a>
+                <a href="https://www.youtube.com/channel/UCwRrTac4ddj3AoycV76TfdA"><i class="fab fa-youtube mr-2"></i></a>
+                <a href="https://www.instagram.com/medipolankara/"><i class="fab fa-instagram mr-2"></i></a>
+            </div>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/AdminLTE-3.0.4/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/AdminLTE-3.0.4/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/AdminLTE-3.0.4/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/AdminLTE-3.0.4/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/AdminLTE-3.0.4/plugins/moment/moment.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/AdminLTE-3.0.4/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/AdminLTE-3.0.4/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/AdminLTE-3.0.4/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/AdminLTE-3.0.4/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/AdminLTE-3.0.4/dist/js/demo.js"></script>
+</body>
+</html>
+

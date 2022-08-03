@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1d16c87ce9c84de6a2a3ee99506eecdf" Name="Diagram1">
+        <EntityTypeShape EntityType="CRMMEDIPOLModel.CRM_ADMIN" Width="1.5" PointX="6.875" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="CRMMEDIPOLModel.CRM_SEHIR" Width="1.5" PointX="3.875" PointY="4.5" />
+        <EntityTypeShape EntityType="CRMMEDIPOLModel.CRM_OGRENCI" Width="1.5" PointX="3.25" PointY="0.5" />
+        <AssociationConnector Association="CRMMEDIPOLModel.FK_CRM_KISI_CRM_SEHIR1" />
+        <EntityTypeShape EntityType="CRMMEDIPOLModel.CRM_SINAVSONUC" Width="1.5" PointX="5.25" PointY="0.5" />
+        <AssociationConnector Association="CRMMEDIPOLModel.FK_CRM_OGRENCI_CRM_SINAVSONUC" />
+        <EntityTypeShape EntityType="CRMMEDIPOLModel.CRM_OKUL" Width="1.5" PointX="1.125" PointY="0.5" />
+        <AssociationConnector Association="CRMMEDIPOLModel.FK_CRM_OGRENCI_CRM_OKUL" />
+        <EntityTypeShape EntityType="CRMMEDIPOLModel.CRM_ILETISIM" Width="1.5" PointX="6.875" PointY="0.5" />
+        <EntityTypeShape EntityType="CRMMEDIPOLModel.CRM_BOLUM" Width="1.5" PointX="1.125" PointY="3.75" />
+        <AssociationConnector Association="CRMMEDIPOLModel.FK_CRM_OKUL_CRM_BOLUM" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

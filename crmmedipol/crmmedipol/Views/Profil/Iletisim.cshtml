@@ -1,0 +1,271 @@
+﻿@model crmmedipol.Models.Entity.CRM_ILETISIM
+@{
+    ViewBag.Title = "Iletisim";
+    Layout = "~/Views/Shared/LayoutKullanici.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap 4 -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Default box -->
+                    <div class="card">
+                        <div class="card-header" style="background-color: #172c4a;color:white">
+                            <h3 class="card-title">
+                                <i class="fas fa-car"></i>
+                                &nbsp; Ulaşım ve İletişim
+                            </h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Küçült">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="image">
+                                <img src="https://ankaramedipol.edu.tr/wp-content/uploads/2020/02/Ulasim_Iletisim.jpg" style="width:100%" />
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header" style="background-color: #172c4a;color:white">
+                    <h3 class="card-title">
+                        <i class="fas fa-walking"></i>
+                        &nbsp; Ankara Medipol’e nasıl gelinir?
+                    </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Küçült">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <blockquote>
+                        <p>
+                            Ankara Medipol Üniversitesi ana kampüs Altındağ ilçesi sınırları içerisindedir. Eski tren garının sağında, YHT Garı’nın arkasında yer almakta ve toplu taşıma araçları güzergâhında bulunmaktadır.
+                        </p>
+                        <p>
+                            Ankara Medipol Üniversitesi, Ankara şehir merkezinde Altındağ ilçesi sınırları içerisinde, Gençlik Parkı’nın hemen yanında yer almaktadır. Şehrin her yerinden hemen hemen tek vasıta ile ulaşmak mümkündür.  OSB-Koru (M1) metro hattı üzerindeki Ulus istasyonuna yürüme mesafesindedir.
+                        </p>
+                    </blockquote>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- ./col -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header" style="background-color: #172c4a;color:white">
+                    <h3 class="card-title">
+                        <i class="fas fa-map-marked-alt"></i>
+                        &nbsp; Ana Kampüs (Anafartalar)
+                    </h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Küçült">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body clearfix">
+                    <blockquote class="quote-secondary">
+                        <p>
+                            Yerleşke:&nbsp;	Ankara Medipol Üniversitesi (Ana Kampüs Rektörlük)<br />
+                            Telefon:&nbsp;	444 20 10<br />
+                            Faks:&nbsp;	0312 920 10 06<br />
+                            Adres:&nbsp;	Hacı Bayram Mah. Talatpaşa Bulvarı No: 2, Altındağ, Ankara<br />
+                        </p>
+                    </blockquote>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #172c4a; color: white">
+                    <h3 class="card-title">
+                        <i class="fas fa-school"></i>
+                        &nbsp; Üniversite Birimleri
+                    </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Birim</th>
+                                <th>E-Posta</th>
+                                <th style="width: 40px">Telefon</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1.</td>
+                                <td>Öğrenci İşleri Dairesi</td>
+                                <td>
+                                    <a href="mailto:ogrenciisleri@ankaramedipol.edu.tr">ogrenciisleri@ankaramedipol.edu.tr</a>
+                                </td>
+                                <td><span class="progress-bar bg-danger">444 20 10</span></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td>Kütüphane ve Dokümantasyon Dairesi</td>
+                                <td>
+                                    <a href="mailto:kutuphane@ankaramedipol.edu.tr">kutuphane@ankaramedipol.edu.tr</a>
+                                </td>
+                                <td><span class="progress-bar bg-warning">444 20 10</span></td>
+                            </tr>
+                            <tr>
+                                <td>3.</td>
+                                <td>Bilgi Teknolojileri Dairesi</td>
+                                <td>
+                                    <a href="mailto:btdestek@ankaramedipol.edu.tr">btdestek@ankaramedipol.edu.tr</a>
+                                </td>
+                                <td><span class="progress-bar bg-primary">444 20 10</span></td>
+                            </tr>
+                            <tr>
+                                <td>4.</td>
+                                <td>Bilgi Teknolojileri Dairesi / Mebis Destek</td>
+                                <td>
+                                    <a href="mailto:mebisdestek@ankaramedipol.edu.tr">mebisdestek@ankaramedipol.edu.tr</a>
+                                </td>
+                                <td><span class="progress-bar bg-success">444 20 10</span></td>
+                            </tr>
+                            <tr>
+                                <td>5.</td>
+                                <td>İnsan Kaynakları Dairesi</td>
+                                <td>
+                                    <a href="mailto:ik@ankaramedipol.edu.tr">ik@ankaramedipol.edu.tr</a>
+                                </td>
+                                <td><span class="progress-bar bg-danger">444 20 10</span></td>
+                            </tr>
+                            <tr>
+                                <td>6.</td>
+                                <td>Genel İletişim</td>
+                                <td>
+                                    <a href="mailto:bilgi@ankaramedipol.edu.tr">bilgi@ankaramedipol.edu.tr</a>
+                                </td>
+                                <td><span class="progress-bar bg-warning">444 20 10</span></td>
+                            </tr>
+                            <tr>
+                                <td>7.</td>
+                                <td>KEP Adresi</td>
+                                <td>
+                                    <a href="https://ankaramedipol.edu.tr/universite/ulasim-ve-iletisim/ankaramedipoluniversitesi@hs03.kep.tr">ankaramedipoluniversitesi@hs03.kep.tr</a>
+                                </td>
+                                <td><span class="progress-bar bg-primary">--- -- --</span></td>
+                            </tr>
+                            <tr>
+                                <td>8.</td>
+                                <td>Sağlık Kültür ve Spor Dairesi</td>
+                                <td>
+                                    <a href="mailto:sks@ankaramedipol.edu.tr">sks@ankaramedipol.edu.tr</a>
+                                </td>
+                                <td><span class="progress-bar bg-success">444 20 10</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header" style="background-color: #172c4a">
+                            <h3 class="card-title">
+                                <i class="fas fa-phone-volume"></i>
+                                &nbsp; İletişim Formu
+                            </h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="ADSOYAD" placeholder="Adınız Soyadınız*">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="MAIL" placeholder="E-posta*">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="TELEFON" placeholder="Telefon Numarası*">
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <select class="form-control" name="BIRIM">
+                                                <option>Birim Seçiniz*</option>
+                                                <option>Öğrenci İşleri</option>
+                                                <option>İnsan Kaynakları</option>
+                                                <option>Genel Bilgi</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="KONU" placeholder="Konu*">
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <!-- textarea -->
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="3" name="MESAJ" placeholder="Mesajınız*"></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <input type="submit" id="submit" value="Kaydet" class="btn btn-primary" style="background-color: #172c4a">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
